@@ -1,6 +1,6 @@
 //If not running production, then allow use of env variables for testing and such
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+    require('dotenv').config();
 }
 
 //Dependencies
@@ -17,23 +17,24 @@ const app = express();
 //potentially threatening information for attackers apparently? Idk, lets disable it.
 app.disable('x-powered-by');
 
+//Middleware
 app.use(helmet()); //Helmet is a security package that helps prevent some common attacks
-app.use(cors()); //CORS is a package that helps prevent some common attacks
+app.use(cors()); //CORS is a security package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
 
 
-//get / route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+//Routers
+const rootRoute = require('./routes/rootRoute');
+// const userRoute = require('./routes/userRoute'); Future example
+app.use('/', rootRoute);
 
-  //Start the server
-  app.listen(port, () => {
+//Start the server
+app.listen(port, () => {
     console.log(`Server running on port ${port}, in ${process.env.NODE_ENV} mode`);
     // console.log(`NODE_ENV is ${process.env.NODE_ENV}`);
     // console.log(`PORT is ${process.env.PORT}`);
     // console.log(`API_KEY is ${process.env.GMAP_API_KEY}`);
-  });
+});
 
 
 //Export
