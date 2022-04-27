@@ -21,12 +21,21 @@ app.use(helmet()); //Helmet is a security package that helps prevent some common
 app.use(cors()); //CORS is a package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
 
-if (module === require.main) {
+
+//get / route
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
   //Start the server
   app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    console.log(`Server running on port ${port}, in ${process.env.NODE_ENV} mode`);
+    // console.log(`NODE_ENV is ${process.env.NODE_ENV}`);
+    // console.log(`PORT is ${process.env.PORT}`);
+    // console.log(`API_KEY is ${process.env.GMAP_API_KEY}`);
   });
-}
+
 
 //Export
+
 module.exports = app;
