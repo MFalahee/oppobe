@@ -21,13 +21,15 @@ app.disable('x-powered-by');
 app.use(helmet()); //Helmet is a security package that helps prevent some common attacks
 app.use(cors()); //CORS is a security package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
-
+// app.use(require('./middleware/errorHandler')); //Error handler middleware
 
 //Routers
 const rootRoute = require('./routes/rootRoute');
+const apiRoute = require('./routes/apiRoute');
 // const userRoute = require('./routes/userRoute'); Future example
-app.use('/', rootRoute);
 
+app.use('/api', apiRoute);
+app.use('/', rootRoute);
 //Start the server
 app.listen(port, () => {
     console.log(`Server running on port ${port}, in ${process.env.NODE_ENV} mode`);
