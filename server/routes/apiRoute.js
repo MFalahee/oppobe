@@ -8,4 +8,6 @@ const router = express.Router();
 // authentication is currently FAKE-- will update eventually
 router.route('/').all(authMiddleware).get(apiController.root);
 
+router.route('/weather').all(authMiddleware).get(apiController.weather);
+
 module.exports = router
