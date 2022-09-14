@@ -8,6 +8,9 @@ class apiController {
     static weather(req, res) {
         res.status(200).json(salsa)
     }
+    static earth(req, res) {
+        res.status(200).json("earth")
+    }
 }
 
 module.exports = apiController

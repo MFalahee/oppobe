@@ -14,7 +14,6 @@ const port = process.env.PORT || 5555;
 //create app
 const app = express();
 
-//potentially threatening information for attackers apparently? Idk, lets disable it.
 app.disable('x-powered-by');
 
 //Middleware
