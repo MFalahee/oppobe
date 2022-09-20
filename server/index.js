@@ -20,7 +20,7 @@ app.disable("x-powered-by");
 app.use(helmet()); //Helmet is a security package that helps prevent some common attacks
 app.use(
   cors({
-    origin: [...process.env.ORIGINLIST],
+    origin: ["https://localhost:*", "https://the.opposite.space"],
   })
 ); //CORS is a security package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
