@@ -22,7 +22,8 @@ app.use(
   cors({
     origin: ["http://localhost:3000", "https://the.opposite.space"],
   })
-); //CORS is a security package that helps prevent some common attacks
+); 
+//CORS is a security package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
 // app.use(require('./middleware/errorHandler')); //Error handler middleware
 
