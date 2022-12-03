@@ -10,19 +10,17 @@ const cors = require("cors");
 
 //setup port
 const port = process.env.PORT || 5555;
-
 //create app
 const app = express();
-
 app.disable("x-powered-by");
 
 //Middleware
 app.use(helmet()); //Helmet is a security package that helps prevent some common attacks
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://the.opposite.space"],
+    origin: process.env.ORIGIN_LIST?.split(","),
   })
-); 
+);
 //CORS is a security package that helps prevent some common attacks
 app.use(express.json()); //Express JSON is a package that helps with parsing JSON
 // app.use(require('./middleware/errorHandler')); //Error handler middleware
